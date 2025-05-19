@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Half Green Screen</title>
+  <style>
+    html,
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      display: flex;
+      height: 100vh;
+      /* Full screen height */
+      width: 100vh;
+    }
+
+    p {
+      font-size: larger;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    input[type="text"],
+    select {
+      width: 100%;
+      padding: 8px 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    input[type="password"],
+    select {
+      width: 100%;
+      padding: 8px 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .btn-group {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+
+    button {
+      padding: 10px 15px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .login-btn {
+      background-color: #007BFF;
+      color: white;
+    }
+
+    .create-btn {
+      background-color: #28A745;
+      color: white;
+    }
+
+    button:hover {
+      opacity: 0.9;
+    }
+  </style>
+</head>
+
+<body>
+
+
+
+  <div class="min-h-screen w-full bg-gray-100 dark:bg-gray-800 text-black dark:text-white px-4 md:px-12 space-y-12">
+
+    <!-- 🔥 Logo -->
+    <img src="assets/logo.png" alt="Logo" class="mx-auto h-20 w-auto mt-6">
+    <h2 class="text-2xl font-bold text-center">User Login</h2>
+
+    <!-- Username -->
+    <input [(ngModel)]="username" placeholder="Username"
+      class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-700 text-black dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+
+    <!-- Password -->
+    <input [(ngModel)]="password" type="password" placeholder="Password"
+      class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-700 text-black dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+
+    <!-- Role Selection -->
+    <select [(ngModel)]="role"
+      class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-700 text-black dark:text-white focus:outline-none">
+      <option value="" disabled selected>Select role</option>
+      <option value="admin">Admin</option>
+      <option value="user">User</option>
+    </select>
+
+    <!-- Action Buttons -->
+    <div class="flex flex-col md:flex-row md:justify-between md:space-x-4 space-y-4 md:space-y-0">
+      <button (click)="createUser()" class="w-full md:w-1/2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
+        Create User
+      </button>
+      <button (click)="login()" class="w-full md:w-1/2 px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700">
+        Login
+      </button>
+    </div>
+
+    <!-- Forgot Password Link on New Line -->
+    <a href="/forgot-password"
+      class="w-full text-center px-4 py-2 bg-transparent border-2 border-blue-600 text-blue-600 rounded hover:bg-blue-600 hover:text-white mt-4 block">
+      Forgot Password?
+    </a>
+
+    <!-- Message -->
+    <p class="text-center text-red-500">{{ message }}</p>
+
+  </div>
+
+
+
+
+</body>
+
+</html>

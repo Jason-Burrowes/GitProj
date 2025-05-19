@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body class="content">
+    <!-- Navigation -->
+    <nav>
+      <ul>
+        <div class="dropdown">
+          <button class="dropbtn">PAGES</button>
+          <div class="dropdown-content">
+            <a href="/website.html" class="navbutton">Home</a>
+            <a href="/css.html" class="navbutton">CSS</a>
+            <a href="/css.html" class="navbutton">JavaScript</a>
+          </div>
+        </div>
+      </ul>
+    </nav>
+    <br />
+
+    <!-- Main content -->
+    <div class="container">
+      <div class="left">
+        <h1>Contact</h1>
+        <button class="home" onclick="location.href='index.html'">Form</button>
+        <br /><br />
+        <button class="home" onclick="location.href='index.html'">Email</button>
+      </div>
+      <div class="right">
+        <form
+          id="contactForm"
+          action="http://localhost:3000/submit-form"
+          method="post"
+        >
+          <div>
+            <label for="name">Name:</label><br />
+            <input type="text" id="name" name="name" required />
+          </div>
+
+          <div>
+            <label for="email">Email:</label><br />
+            <input type="email" id="email" name="email" required />
+          </div>
+
+          <div>
+            <label for="subject">Subject:</label><br />
+            <input type="text" id="subject" name="subject" />
+          </div>
+
+          <div>
+            <label for="message">Message:</label><br />
+            <textarea id="message" name="message" required></textarea>
+          </div>
+
+          <div class="checkbox-group">
+            <input type="checkbox" id="copy" name="copy" /><br />
+            <label for="copy">Send me a copy of this message</label>
+          </div>
+          <button style="height: 50px; width: 100px" type="submit">Send</button>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      const form = document.getElementById("contactForm");
+
+      form.addEventListener("submit", async function (e) {
+        e.preventDefault();
+
+        const formData = new FormData(form);
+        const formParams = new URLSearchParams();
+
+        for (const [key, value] of formData.entries()) {
+          formParams.append(key, value);
+        }
+
+        try {
+          const response = await fetch("http://localhost:3000/submit-form", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/x-www-form-urlencoded",
+            },
+            body: formParams,
+          });
+
+          const result = await response.text();
+          if (response.ok) {
+            alert("Form submitted successfully!");
+            form.reset();
+          } else {
+            alert("Server error: " + result);
+          }
+        } catch (error) {
+          alert("Fetch error: " + error.message);
+        }
+      });
+    </script>
+  </body>
+</html>

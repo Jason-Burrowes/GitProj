@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>DOM Manipulation Demo</title>
+  <style>
+    .highlight {
+      color: red;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h1 id="main-title">Welcome!</h1>
+  <p class="description">This is a description paragraph.</p>
+  <div id="output"></div>
+
+  <!-- Existing buttons -->
+  <button id="changeText">Change Text</button>
+  <button id="changeStyle">Change Style</button>
+  <button id="toggleClass">Toggle Class</button>
+
+  <!-- New buttons -->
+  <button id="addClass">Add Class</button>
+  <button id="removeClass">Remove Class</button>
+
+  <script>
+    // 1. getElementById
+    const title = document.getElementById("main-title");
+    console.log("getElementById:", title.textContent);
+
+    // 2. querySelector
+    const paragraph = document.querySelector(".description");
+    console.log("querySelector:", paragraph.textContent);
+
+    // 3. textContent / innerHTML
+    document.getElementById("changeText").addEventListener("click", () => {
+      document.getElementById("output").textContent = "This text was set using textContent.";
+    });
+
+    // 4. style
+    document.getElementById("changeStyle").addEventListener("click", () => {
+      paragraph.style.color = "blue";
+      paragraph.style.fontSize = "20px";
+    });
+
+    // 5. classList.toggle
+    document.getElementById("toggleClass").addEventListener("click", () => {
+      paragraph.classList.toggle("highlight");
+    });
+
+    // 6. classList.add
+    document.getElementById("addClass").addEventListener("click", () => {
+      paragraph.classList.add("highlight");
+    });
+
+    // 7. classList.remove
+    document.getElementById("removeClass").addEventListener("click", () => {
+      paragraph.classList.remove("highlight");
+    });
+  </script>
+
+</body>
+</html>

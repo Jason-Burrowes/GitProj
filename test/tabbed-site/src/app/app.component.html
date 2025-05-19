@@ -1,0 +1,17 @@
+<nav style="display: flex; gap: 20px; padding: 10px; background: #f0f0f0;">
+  <a routerLink="/home" routerLinkActive="active">Home</a>
+  <a routerLink="/about" routerLinkActive="active">About</a>
+  <a routerLink="/contact-us" routerLinkActive="active">Contact Us</a>
+
+  <button (click)="toggleDarkMode()" class="px-4 py-2 bg-gray-800 text-white rounded">
+    Toggle Dark Mode
+  </button>
+
+</nav>
+
+<div class="p-6 bg-white dark:bg-gray-900 text-black dark:text-white min-h-screen">
+  <router-outlet></router-outlet>
+  <div>
+    This div supports dark mode!
+  </div>
+</div>
